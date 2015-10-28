@@ -2,7 +2,9 @@ package ar.com.kfgodel.processingo;
 
 import ar.com.dgarcia.javaspec.api.TestContext;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
+import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.original.ProcessingHooks;
+import ar.com.kfgodel.processingo.api.viewports.ViewSize;
 import ar.com.kfgodel.processingo.impl.PappletAdapter;
 
 import java.util.function.Supplier;
@@ -20,4 +22,7 @@ public interface ProcessingoTestContext extends TestContext{
 
   ProcessingSketch sketch();
   void sketch(Supplier<ProcessingSketch> definition);
+
+  ViewSize viewSize();
+  void viewSize(Supplier<ViewSize> definition);
 }
