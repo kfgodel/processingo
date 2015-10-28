@@ -4,6 +4,7 @@ import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
 import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
 import ar.com.kfgodel.processingo.api.original.ProcessingHooks;
+import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
 import processing.core.PApplet;
 
 /**
@@ -14,7 +15,7 @@ import processing.core.PApplet;
  *
  * Created by tenpines on 26/10/15.
  */
-public class PappletAdapter extends PApplet implements ProcessingCanvas, ProcessingConfiguration, ProcessingHooks {
+public class PappletAdapter extends PApplet implements ProcessingCanvas, ProcessingConfiguration, ProcessingHooks, ProcessingSetup {
   /**
    * Static variable used to reference the delegate sketch when
    * the instance of this class is created by processing
@@ -61,4 +62,10 @@ public class PappletAdapter extends PApplet implements ProcessingCanvas, Process
     grabDelegateSketch();
     delegateSketch.onSettings(this);
   }
+
+  @Override
+  public void setup() {
+    delegateSketch.onSetup(this);
+  }
+
 }

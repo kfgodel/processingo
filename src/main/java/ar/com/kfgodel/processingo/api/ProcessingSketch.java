@@ -1,6 +1,7 @@
 package ar.com.kfgodel.processingo.api;
 
 import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
+import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
 
 /**
  * This type represents the user code of a processing application.<br>
@@ -10,9 +11,16 @@ import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
  */
 public interface ProcessingSketch {
   /**
-   * Called when the sketch is initialized to define aditional configuration
+   * Called when the sketch is initialized to define viewport configuration
    * for the rendering settings
    * @param configuration The configuration that can be changed before starting the actual display
    */
   void onSettings(ProcessingConfiguration configuration);
+
+  /**
+   * Invoked after the sketch viewport is initialized, this is run only once
+   * allowing to draw static things, and also prepare resources
+   * @param processingSetup The setup context available to the sketch
+   */
+  void onSetup(ProcessingSetup processingSetup);
 }

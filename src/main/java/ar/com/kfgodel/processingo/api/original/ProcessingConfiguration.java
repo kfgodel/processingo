@@ -22,4 +22,5 @@ public interface ProcessingConfiguration {
    * @see <a href="https://processing.org/reference/fullScreen_.html">https://processing.org/reference/fullScreen_.html</a>
    */
   void fullScreen(String renderer);
+
 }

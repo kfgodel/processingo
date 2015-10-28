@@ -7,4 +7,5 @@ package ar.com.kfgodel.processingo.api.original;
  * Created by tenpines on 26/10/15.
  */
 public interface ProcessingCanvas {
+  void text(String str, float x, float y);
 }

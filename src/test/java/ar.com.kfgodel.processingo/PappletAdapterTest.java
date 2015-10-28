@@ -4,6 +4,7 @@ import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
+import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
 import ar.com.kfgodel.processingo.impl.PappletAdapter;
 import org.junit.runner.RunWith;
 
@@ -32,6 +33,14 @@ public class PappletAdapterTest extends JavaSpec<ProcessingoTestContext> {
           context().hooks().settings();
 
           verify(context().sketch()).onSettings(notNull(ProcessingConfiguration.class));
+        });
+
+        it("delegates setup to to the sketch when setup is invoked", () -> {
+          context().sketch(() -> mock(ProcessingSketch.class));
+
+          context().hooks().setup();
+
+          verify(context().sketch()).onSetup(notNull(ProcessingSetup.class));
         });
       });
 

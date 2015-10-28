@@ -13,4 +13,6 @@ public interface ProcessingHooks {
    *   @see <a href="https://processing.org/reference/settings_.html">https://processing.org/reference/settings_.html</a>
    */
   void settings();
+
+  void setup();
 }
