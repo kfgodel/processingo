@@ -1,5 +1,6 @@
 package ar.com.kfgodel.processingo.api;
 
+import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
 import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
 
@@ -23,4 +24,13 @@ public interface ProcessingSketch {
    * @param processingSetup The setup context available to the sketch
    */
   void onSetup(ProcessingSetup processingSetup);
+
+  /**
+   * Invoked on every frame after setup has been called to redraw the scene.<br>
+   *   How frequent this method gets called depends on the fps configuration of the sketch and
+   *   how much each frame takes to render. If it takes too much the fps goal may not be met.
+   *
+   * @param givenCanvas The processing space that can be drawn on
+   */
+  void onDraw(ProcessingCanvas givenCanvas);
 }

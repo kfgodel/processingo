@@ -15,4 +15,6 @@ public interface ProcessingHooks {
   void settings();
 
   void setup();
+
+  void draw();
 }

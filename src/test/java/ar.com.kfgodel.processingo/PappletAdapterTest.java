@@ -2,8 +2,9 @@ package ar.com.kfgodel.processingo;
 
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
-import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
+import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
+import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
 import ar.com.kfgodel.processingo.impl.PappletAdapter;
 import org.junit.runner.RunWith;
@@ -35,12 +36,20 @@ public class PappletAdapterTest extends JavaSpec<ProcessingoTestContext> {
           verify(context().sketch()).onSettings(notNull(ProcessingConfiguration.class));
         });
 
-        it("delegates setup to to the sketch when setup is invoked", () -> {
+        it("delegates setup to the sketch when setup is invoked", () -> {
           context().sketch(() -> mock(ProcessingSketch.class));
 
           context().hooks().setup();
 
           verify(context().sketch()).onSetup(notNull(ProcessingSetup.class));
+        });
+
+        it("delegates draw to the sketch when draw is invoked", () -> {
+          context().sketch(() -> mock(ProcessingSketch.class));
+
+          context().hooks().draw();
+
+          verify(context().sketch()).onDraw(notNull(ProcessingCanvas.class));
         });
       });
 

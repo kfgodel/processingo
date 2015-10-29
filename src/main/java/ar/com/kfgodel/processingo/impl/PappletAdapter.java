@@ -1,8 +1,8 @@
 package ar.com.kfgodel.processingo.impl;
 
+import ar.com.kfgodel.processingo.api.ProcessingSketch;
 import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
 import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
-import ar.com.kfgodel.processingo.api.ProcessingSketch;
 import ar.com.kfgodel.processingo.api.original.ProcessingHooks;
 import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
 import processing.core.PApplet;
@@ -67,5 +67,11 @@ public class PappletAdapter extends PApplet implements ProcessingCanvas, Process
   public void setup() {
     delegateSketch.onSetup(this);
   }
+
+  @Override
+  public void draw() {
+    delegateSketch.onDraw(this);
+  }
+
 
 }

@@ -1,7 +1,8 @@
-package ar.com.kfgodel.processingo.impl;
+package ar.com.kfgodel.processingo.impl.sketchs;
 
-import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
+import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
+import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
 
 /**
@@ -19,6 +20,11 @@ public class SketchSupport implements ProcessingSketch {
 
   @Override
   public void onSetup(ProcessingSetup processingSetup) {
+    // Do nothing by default
+  }
+
+  @Override
+  public void onDraw(ProcessingCanvas givenCanvas) {
     // Do nothing by default
   }
 }
