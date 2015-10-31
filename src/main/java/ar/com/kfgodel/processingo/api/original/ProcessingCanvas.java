@@ -8,4 +8,8 @@ package ar.com.kfgodel.processingo.api.original;
  */
 public interface ProcessingCanvas {
   void text(String str, float x, float y);
+
+  void ellipse(float a, float b, float c, float d);
+
+  void background(int rgb);
 }

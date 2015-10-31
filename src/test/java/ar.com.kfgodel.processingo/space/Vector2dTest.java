@@ -27,6 +27,32 @@ public class Vector2dTest extends JavaSpec<ProcessingoTestContext> {
         assertThat(context().vector().y()).isEqualTo(10);
       });
 
+      it("returns a new vector as the result of the addition to other vector", () -> {
+        Vector2d result = context().vector().plus(Vector2d.xy(10, 10));
+        assertThat(result).isNotSameAs(context().vector());
+        assertThat(result.x()).isEqualTo(context().vector().x() + 10);
+        assertThat(result.y()).isEqualTo(context().vector().y() + 10);
+      });
+
+      it("returns a new vector when inverted x", () -> {
+        Vector2d newVector = context().vector().invertX();
+        assertThat(newVector).isNotSameAs(context().vector());
+        assertThat(newVector.x()).isEqualTo(-1 * context().vector().x());
+      });
+
+      it("returns a new vector when inverted y", () -> {
+        Vector2d newVector = context().vector().invertY();
+        assertThat(newVector).isNotSameAs(context().vector());
+        assertThat(newVector.y()).isEqualTo(-1 * context().vector().y());
+      });
+
+      it("returns a new product vector when multiplied", () -> {
+        Vector2d other = Vector2d.xy(2.0, 3.0);
+        Vector2d newVector = context().vector().product(other);
+        assertThat(newVector).isNotSameAs(context().vector());
+        assertThat(newVector.x()).isEqualTo(context().vector().x() * other.x());
+        assertThat(newVector.y()).isEqualTo(context().vector().y() * other.y());
+      });
     });
   }
 }

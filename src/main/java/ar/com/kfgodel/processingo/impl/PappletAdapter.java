@@ -73,5 +73,4 @@ public class PappletAdapter extends PApplet implements ProcessingCanvas, Process
     delegateSketch.onDraw(this);
   }
 
-
 }
