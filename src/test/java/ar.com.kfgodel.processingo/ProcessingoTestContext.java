@@ -4,10 +4,13 @@ import ar.com.dgarcia.javaspec.api.TestContext;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
 import ar.com.kfgodel.processingo.api.original.ProcessingHooks;
 import ar.com.kfgodel.processingo.api.space.Vector2d;
+import ar.com.kfgodel.processingo.api.time.TimeQuantity;
 import ar.com.kfgodel.processingo.api.viewports.ViewSize;
 import ar.com.kfgodel.processingo.api.viewports.ViewportDefinition;
 import ar.com.kfgodel.processingo.api.visuals.VisualDescription;
 import ar.com.kfgodel.processingo.impl.PappletAdapter;
+import ar.com.kfgodel.processingo.worker.api.WorkerTask;
+import ar.com.kfgodel.processingo.worker.api.WorkerThread;
 
 import java.util.function.Supplier;
 
@@ -36,4 +39,16 @@ public interface ProcessingoTestContext extends TestContext{
 
   Vector2d vector();
   void vector(Supplier<Vector2d> definition);
+
+  void quantity(Supplier<TimeQuantity> definition);
+  TimeQuantity quantity();
+
+  WorkerTask task();
+  void task(Supplier<WorkerTask> definition);
+
+  Runnable runnable();
+  void runnable(Supplier<Runnable> definition);
+
+  void worker(Supplier<WorkerThread> definition);
+  WorkerThread worker();
 }
