@@ -16,4 +16,9 @@ public interface TimeQuantity {
   int amount();
 
   TimeUnit unit();
+
+  /**
+   * This quantity measured in milliseconds
+   */
+  long toMillis();
 }

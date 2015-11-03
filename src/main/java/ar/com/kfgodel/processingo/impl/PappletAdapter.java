@@ -1,10 +1,8 @@
 package ar.com.kfgodel.processingo.impl;
 
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
-import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
-import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
-import ar.com.kfgodel.processingo.api.original.ProcessingHooks;
-import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
+import ar.com.kfgodel.processingo.api.input.MouseEventContext;
+import ar.com.kfgodel.processingo.api.original.*;
 import processing.core.PApplet;
 
 /**
@@ -15,7 +13,9 @@ import processing.core.PApplet;
  *
  * Created by tenpines on 26/10/15.
  */
-public class PappletAdapter extends PApplet implements ProcessingCanvas, ProcessingConfiguration, ProcessingHooks, ProcessingSetup {
+public class PappletAdapter extends PApplet
+  implements ProcessingCanvas, ProcessingConfiguration, ProcessingLifeCycle, ProcessingSetup,
+    ProcessingMouseEvents, MouseEventContext {
   /**
    * Static variable used to reference the delegate sketch when
    * the instance of this class is created by processing
@@ -73,4 +73,18 @@ public class PappletAdapter extends PApplet implements ProcessingCanvas, Process
     delegateSketch.onDraw(this);
   }
 
+  @Override
+  public void mouseClicked() {
+    delegateSketch.onMouseClicked(this);
+  }
+
+  @Override
+  public float mouseX() {
+    return mouseX;
+  }
+
+  @Override
+  public float mouseY() {
+    return mouseY;
+  }
 }

@@ -11,7 +11,7 @@ import ar.com.kfgodel.processingo.api.visuals.VisualDescription;
  * <p>
  * Created by tenpines on 28/10/15.
  */
-public class DescribeWorldPerFrameSketch extends SketchSupport {
+public class DescribeWorldPerFrameSketch extends PluggableSketchSupport {
 
   private ViewportDefinition viewport;
   private VisualDescription worldDescription;

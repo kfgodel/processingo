@@ -23,6 +23,11 @@ public class TimeQuantityImpl implements TimeQuantity {
     return unit;
   }
 
+  @Override
+  public long toMillis() {
+    return unit.toMillis(amount);
+  }
+
   public static TimeQuantityImpl create(int amount, TimeUnit unit) {
     TimeQuantityImpl quantity = new TimeQuantityImpl();
     quantity.amount = amount;

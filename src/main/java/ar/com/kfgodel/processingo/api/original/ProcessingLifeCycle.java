@@ -5,7 +5,7 @@ package ar.com.kfgodel.processingo.api.original;
  *
  * Created by tenpines on 26/10/15.
  */
-public interface ProcessingHooks {
+public interface ProcessingLifeCycle {
 
   /**
    * Called by processing before running the sketch code to setup the pixel environment.
@@ -14,7 +14,15 @@ public interface ProcessingHooks {
    */
   void settings();
 
+  /**
+   * Called after the viewport sizing to define initial state for the sketch drawing (also to load resources)
+   * @see <a href="https://processing.org/reference/setup_.html">https://processing.org/reference/setup_.html</a>
+   */
   void setup();
 
+  /**
+   * Called each frame to change the contents of the viewport in order to update the fram
+   * @see <a href="https://processing.org/reference/draw_.html">https://processing.org/reference/draw_.html</a>
+   */
   void draw();
 }

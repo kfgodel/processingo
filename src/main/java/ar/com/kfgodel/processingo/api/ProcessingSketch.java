@@ -1,5 +1,6 @@
 package ar.com.kfgodel.processingo.api;
 
+import ar.com.kfgodel.processingo.api.input.MouseEventContext;
 import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
 import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
@@ -33,4 +34,10 @@ public interface ProcessingSketch {
    * @param givenCanvas The processing space that can be drawn on
    */
   void onDraw(ProcessingCanvas givenCanvas);
+
+  /**
+   * Invoked on a mouse click and release event
+   * @param mouseEvent The processing context of the mouse event
+   */
+  void onMouseClicked(MouseEventContext mouseEvent);
 }

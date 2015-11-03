@@ -3,6 +3,7 @@ package ar.com.kfgodel.processingo;
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
+import ar.com.kfgodel.processingo.api.input.MouseEventContext;
 import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
 import ar.com.kfgodel.processingo.api.original.ProcessingConfiguration;
 import ar.com.kfgodel.processingo.api.original.ProcessingSetup;
@@ -25,13 +26,13 @@ public class PappletAdapterTest extends JavaSpec<ProcessingoTestContext> {
     describe("an applet adapter", ()->{
       context().adapter(() -> PappletAdapter.create(context().sketch()));
 
-      describe("seen as a set of hooks", ()->{
-        context().hooks(()-> context().adapter());
+      describe("as a life cycle", ()->{
+        context().lifeCycle(() -> context().adapter());
 
         it("delegates configuration to the sketch when settings is invoked", ()->{
           context().sketch(() -> mock(ProcessingSketch.class));
 
-          context().hooks().settings();
+          context().lifeCycle().settings();
 
           verify(context().sketch()).onSettings(notNull(ProcessingConfiguration.class));
         });
@@ -39,7 +40,7 @@ public class PappletAdapterTest extends JavaSpec<ProcessingoTestContext> {
         it("delegates setup to the sketch when setup is invoked", () -> {
           context().sketch(() -> mock(ProcessingSketch.class));
 
-          context().hooks().setup();
+          context().lifeCycle().setup();
 
           verify(context().sketch()).onSetup(notNull(ProcessingSetup.class));
         });
@@ -47,10 +48,23 @@ public class PappletAdapterTest extends JavaSpec<ProcessingoTestContext> {
         it("delegates draw to the sketch when draw is invoked", () -> {
           context().sketch(() -> mock(ProcessingSketch.class));
 
-          context().hooks().draw();
+          context().lifeCycle().draw();
 
           verify(context().sketch()).onDraw(notNull(ProcessingCanvas.class));
         });
+      });
+
+      describe("as mouse listener", () -> {
+        context().mouseEvents(() -> context().adapter());
+
+        it("delegates mouse clicks to the sketch when mouseClicked is invoked", ()->{
+          context().sketch(() -> mock(ProcessingSketch.class));
+
+          context().mouseEvents().mouseClicked();
+
+          verify(context().sketch()).onMouseClicked(notNull(MouseEventContext.class));
+        });
+
       });
 
     });

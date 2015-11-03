@@ -28,6 +28,9 @@ public class TimeQuantityTest extends JavaSpec<ProcessingoTestContext> {
       it("has a unit", () -> {
         assertThat(context().quantity().unit()).isEqualTo(TimeUnit.DAYS);
       });
+      it("can be converted to milliseconds", () -> {
+        assertThat(context().quantity().toMillis()).isEqualTo(3/*dias*/ * 24/*horas*/ * 60 /*minutos*/ * 60 /*seg*/ * 1000 /*millis*/);
+      });
     });
   }
 }

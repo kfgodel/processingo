@@ -2,7 +2,9 @@ package ar.com.kfgodel.processingo;
 
 import ar.com.dgarcia.javaspec.api.TestContext;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
-import ar.com.kfgodel.processingo.api.original.ProcessingHooks;
+import ar.com.kfgodel.processingo.api.original.ProcessingLifeCycle;
+import ar.com.kfgodel.processingo.api.original.ProcessingMouseEvents;
+import ar.com.kfgodel.processingo.api.sketchs.PluggableSketch;
 import ar.com.kfgodel.processingo.api.space.Vector2d;
 import ar.com.kfgodel.processingo.api.time.TimeQuantity;
 import ar.com.kfgodel.processingo.api.viewports.ViewSize;
@@ -22,8 +24,11 @@ public interface ProcessingoTestContext extends TestContext{
   PappletAdapter adapter();
   void adapter(Supplier<PappletAdapter> definition);
 
-  ProcessingHooks hooks();
-  void hooks(Supplier<ProcessingHooks> definition);
+  ProcessingLifeCycle lifeCycle();
+  void lifeCycle(Supplier<ProcessingLifeCycle> definition);
+
+  ProcessingMouseEvents mouseEvents();
+  void mouseEvents(Supplier<ProcessingMouseEvents> definition);
 
   ProcessingSketch sketch();
   void sketch(Supplier<ProcessingSketch> definition);
@@ -51,4 +56,7 @@ public interface ProcessingoTestContext extends TestContext{
 
   void worker(Supplier<WorkerThread> definition);
   WorkerThread worker();
+
+  PluggableSketch pluggable();
+  void pluggable(Supplier<PluggableSketch> definition);
 }
