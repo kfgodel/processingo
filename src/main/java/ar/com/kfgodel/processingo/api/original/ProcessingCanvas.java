@@ -6,7 +6,7 @@ package ar.com.kfgodel.processingo.api.original;
  *
  * Created by tenpines on 26/10/15.
  */
-public interface ProcessingCanvas {
+public interface ProcessingCanvas extends ProcessingStyle {
   /**
    * Draws a text string positioned under the indicated coordinates according to the current
    * positioning model.
@@ -33,4 +33,14 @@ public interface ProcessingCanvas {
    * @see <a href="https://processing.org/reference/background_.html">https://processing.org/reference/background_.html</a>
    */
   void background(int rgb);
+
+  /**
+   * Draws a rectangle on teh given coordinates using the current rect mode
+   * @param x The reference x coordinate
+   * @param y The reference y coordinate
+   * @param width The width of the rectangle
+   * @param height The height of the rectangle
+   * @see <a href="https://processing.org/reference/rect_.html">https://processing.org/reference/rect_.html</a>
+   */
+  void rect(float x, float y, float width, float height);
 }

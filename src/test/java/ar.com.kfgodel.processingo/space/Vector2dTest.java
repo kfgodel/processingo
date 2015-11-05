@@ -4,6 +4,7 @@ import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import ar.com.kfgodel.processingo.ProcessingoTestContext;
 import ar.com.kfgodel.processingo.api.space.Vector2d;
+import org.assertj.core.data.Offset;
 import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,13 +47,35 @@ public class Vector2dTest extends JavaSpec<ProcessingoTestContext> {
         assertThat(newVector.y()).isEqualTo(-1 * context().vector().y());
       });
 
-      it("returns a new product vector when multiplied", () -> {
+      it("returns a new elementProduct vector when multiplied", () -> {
         Vector2d other = Vector2d.xy(2.0, 3.0);
-        Vector2d newVector = context().vector().product(other);
+        Vector2d newVector = context().vector().elementProduct(other);
         assertThat(newVector).isNotSameAs(context().vector());
         assertThat(newVector.x()).isEqualTo(context().vector().x() * other.x());
         assertThat(newVector.y()).isEqualTo(context().vector().y() * other.y());
       });
+
+      it("returns a new scaled vector when multiplied", () -> {
+        Vector2d newVector = context().vector().scale(0.5);
+        assertThat(newVector).isNotSameAs(context().vector());
+        assertThat(newVector.x()).isEqualTo(10);
+        assertThat(newVector.y()).isEqualTo(5);
+      });
+
+      it("returns the floor vector when integered", () -> {
+        Vector2d newVector = Vector2d.xy(1.3, -1.8).integered();
+        assertThat(newVector).isNotSameAs(context().vector());
+        assertThat(newVector.x()).isEqualTo(1);
+        assertThat(newVector.y()).isEqualTo(-1);
+      });
+
+      it("returns the new matrix product result when matrix product used", () -> {
+        Vector2d newVector = Vector2d.xy(1,0).rotate(90);
+        assertThat(newVector).isNotSameAs(context().vector());
+        assertThat(newVector.x()).isEqualTo(0, Offset.offset(0.00000001f));
+        assertThat(newVector.y()).isEqualTo(1);
+      });
+      
     });
   }
 }

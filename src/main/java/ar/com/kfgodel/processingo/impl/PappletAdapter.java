@@ -15,7 +15,7 @@ import processing.core.PApplet;
  */
 public class PappletAdapter extends PApplet
   implements ProcessingCanvas, ProcessingConfiguration, ProcessingLifeCycle, ProcessingSetup,
-    ProcessingMouseEvents, MouseEventContext {
+    ProcessingMouseEvents, MouseEventContext, ProcessingStyle {
   /**
    * Static variable used to reference the delegate sketch when
    * the instance of this class is created by processing
@@ -87,4 +87,5 @@ public class PappletAdapter extends PApplet
   public float mouseY() {
     return mouseY;
   }
+
 }

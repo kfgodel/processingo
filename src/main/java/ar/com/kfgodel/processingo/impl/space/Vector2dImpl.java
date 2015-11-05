@@ -41,8 +41,33 @@ public class Vector2dImpl implements Vector2d {
   }
 
   @Override
-  public Vector2d product(Vector2d other) {
+  public Vector2d elementProduct(Vector2d other) {
     return Vector2d.xy(x * other.x(), y * other.y());
+  }
+
+  @Override
+  public Vector2d scale(double scalar) {
+    return Vector2d.xy(this.x * scalar, this.y * scalar);
+  }
+
+  @Override
+  public Vector2d integered() {
+    return Vector2d.xy(asInteger(this.x), asInteger(this.y));
+  }
+
+  @Override
+  public Vector2d rotate(float degrees) {
+    double angleInRadians = Math.toRadians(degrees);
+    double cos = Math.cos(angleInRadians);
+    double sin = Math.sin(angleInRadians);
+    return Vector2d.xy(x * cos - y * sin, x * sin + y * cos);
+  }
+
+  private double asInteger(double val) {
+    if (val < 0) {
+      return Math.ceil(val);
+    }
+    return Math.floor(val);
   }
 
   @Override
@@ -52,9 +77,8 @@ public class Vector2dImpl implements Vector2d {
 
     Vector2d vector2d = (Vector2d) o;
 
-    if (Float.compare(vector2d.x(), x) != 0) return false;
-    return Float.compare(vector2d.y(), y) == 0;
-
+    if (vector2d.x() != x) return false;
+    return vector2d.y() == y;
   }
 
   @Override

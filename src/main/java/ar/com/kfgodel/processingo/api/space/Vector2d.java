@@ -48,7 +48,26 @@ public interface Vector2d {
   Vector2d invertY();
 
   /**
-   * Returns the inner product of each component as a new vector
+   * Returns the inner elementProduct of each component as a new vector
    */
-  Vector2d product(Vector2d other);
+  Vector2d elementProduct(Vector2d other);
+
+  /**
+   * Multiplies each element by the given scalar
+   * @param scalar The factor to scale this vector
+   */
+  Vector2d scale(double scalar);
+
+  /**
+   * Applies an int transformation to each component (each scalar component is rounded to its nearest to 0 asInteger)
+   * @return The resulting vector
+   */
+  Vector2d integered();
+
+  /**
+   * Rotates this vector by the given angle in degrees
+   * @param degrees The angle to rotate this vector
+   * @return The new rotated vector
+   */
+  Vector2d rotate(float degrees);
 }
