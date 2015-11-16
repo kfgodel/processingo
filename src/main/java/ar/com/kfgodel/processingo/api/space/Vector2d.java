@@ -70,4 +70,10 @@ public interface Vector2d {
    * @return The new rotated vector
    */
   Vector2d rotate(float degrees);
+
+  /**
+   * Inverts the direction of this vector on each coordinate
+   * @return The new vector
+   */
+  Vector2d invert();
 }

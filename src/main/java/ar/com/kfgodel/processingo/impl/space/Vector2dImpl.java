@@ -63,6 +63,11 @@ public class Vector2dImpl implements Vector2d {
     return Vector2d.xy(x * cos - y * sin, x * sin + y * cos);
   }
 
+  @Override
+  public Vector2d invert() {
+    return Vector2d.xy(-x, -y);
+  }
+
   private double asInteger(double val) {
     if (val < 0) {
       return Math.ceil(val);

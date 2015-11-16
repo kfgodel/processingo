@@ -75,7 +75,14 @@ public class Vector2dTest extends JavaSpec<ProcessingoTestContext> {
         assertThat(newVector.x()).isEqualTo(0, Offset.offset(0.00000001f));
         assertThat(newVector.y()).isEqualTo(1);
       });
-      
+
+      it("returns the sign inverted vector when invert used", () -> {
+        Vector2d newVector = context().vector().invert();
+        assertThat(newVector).isNotSameAs(context().vector());
+        assertThat(newVector.x()).isEqualTo(-20);
+        assertThat(newVector.y()).isEqualTo(-10);
+      });
+
     });
   }
 }
