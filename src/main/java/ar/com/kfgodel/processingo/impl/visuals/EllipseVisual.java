@@ -11,19 +11,17 @@ import ar.com.kfgodel.processingo.api.visuals.VisualDescription;
 public class EllipseVisual implements VisualDescription {
 
   private BidiVector position;
-  private float width;
-  private float height;
+  private BidiVector size;
 
   @Override
   public void applyOn(ProcessingCanvas canvas) {
-    canvas.ellipse(position.x().asFloat(), position.y().asFloat(), width, height);
+    canvas.ellipse(position.x().asFloat(), position.y().asFloat(), size.width().asFloat(), size.height().asFloat());
   }
 
-  public static EllipseVisual create(BidiVector position, float width, float height) {
+  public static EllipseVisual create(BidiVector position, BidiVector size) {
     EllipseVisual visual = new EllipseVisual();
     visual.position = position;
-    visual.width = width;
-    visual.height = height;
+    visual.size = size;
     return visual;
   }
 

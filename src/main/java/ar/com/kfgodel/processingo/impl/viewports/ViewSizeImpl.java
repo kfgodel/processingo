@@ -1,5 +1,7 @@
 package ar.com.kfgodel.processingo.impl.viewports;
 
+import ar.com.kfgodel.mathe.api.BidiVector;
+import ar.com.kfgodel.mathe.api.Mathe;
 import ar.com.kfgodel.processingo.api.viewports.ViewSize;
 
 /**
@@ -8,21 +10,19 @@ import ar.com.kfgodel.processingo.api.viewports.ViewSize;
  */
 public class ViewSizeImpl implements ViewSize {
 
-  private final int width;
-  private final int height;
+  private final BidiVector size;
 
   public ViewSizeImpl(final int width, final int height) {
-    this.width = width;
-    this.height = height;
+    this.size = Mathe.vector(width, height);
   }
 
   @Override
   public int width() {
-    return width;
+    return size.width().asInt();
   }
 
   @Override
   public int height() {
-    return height;
+    return size.height().asInt();
   }
 }
