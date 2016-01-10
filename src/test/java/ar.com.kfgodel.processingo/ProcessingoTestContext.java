@@ -1,11 +1,11 @@
 package ar.com.kfgodel.processingo;
 
 import ar.com.dgarcia.javaspec.api.TestContext;
+import ar.com.kfgodel.mathe.api.BidiVector;
 import ar.com.kfgodel.processingo.api.ProcessingSketch;
 import ar.com.kfgodel.processingo.api.original.ProcessingLifeCycle;
 import ar.com.kfgodel.processingo.api.original.ProcessingMouseEvents;
 import ar.com.kfgodel.processingo.api.sketchs.PluggableSketch;
-import ar.com.kfgodel.processingo.api.space.Vector2d;
 import ar.com.kfgodel.processingo.api.time.TimeQuantity;
 import ar.com.kfgodel.processingo.api.viewports.ViewSize;
 import ar.com.kfgodel.processingo.api.viewports.ViewportDefinition;
@@ -42,8 +42,8 @@ public interface ProcessingoTestContext extends TestContext{
   VisualDescription visualDescription();
   void visualDescription(Supplier<VisualDescription> definition);
 
-  Vector2d vector();
-  void vector(Supplier<Vector2d> definition);
+  BidiVector vector();
+  void vector(Supplier<BidiVector> definition);
 
   void quantity(Supplier<TimeQuantity> definition);
   TimeQuantity quantity();

@@ -2,9 +2,9 @@ package ar.com.kfgodel.processingo.visuals;
 
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
+import ar.com.kfgodel.mathe.api.Mathe;
 import ar.com.kfgodel.processingo.ProcessingoTestContext;
 import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
-import ar.com.kfgodel.processingo.api.space.Vector2d;
 import ar.com.kfgodel.processingo.impl.visuals.TextVisual;
 import org.junit.runner.RunWith;
 
@@ -20,7 +20,7 @@ public class TextVisualTest extends JavaSpec<ProcessingoTestContext> {
   @Override
   public void define() {
     describe("a text visual", () -> {
-      context().visualDescription(()-> TextVisual.create("a text", Vector2d.xy(1, 2)));
+      context().visualDescription(()-> TextVisual.create("a text", Mathe.vector(1, 2)));
 
       it("draws a text when applied on a processing canvas", () -> {
         ProcessingCanvas canvas = mock(ProcessingCanvas.class);

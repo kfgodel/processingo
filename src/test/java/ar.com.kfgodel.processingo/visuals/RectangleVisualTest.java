@@ -2,9 +2,9 @@ package ar.com.kfgodel.processingo.visuals;
 
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
+import ar.com.kfgodel.mathe.api.Mathe;
 import ar.com.kfgodel.processingo.ProcessingoTestContext;
 import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
-import ar.com.kfgodel.processingo.api.space.Vector2d;
 import ar.com.kfgodel.processingo.impl.visuals.RectangleVisual;
 import org.junit.runner.RunWith;
 
@@ -20,7 +20,7 @@ public class RectangleVisualTest extends JavaSpec<ProcessingoTestContext> {
   @Override
   public void define() {
     describe("a rectangle visual", () -> {
-      context().visualDescription(() -> RectangleVisual.create(Vector2d.xy(3, 4), Vector2d.xy(50, 60)));
+      context().visualDescription(() -> RectangleVisual.create(Mathe.vector(3, 4), Mathe.vector(50, 60)));
 
       it("draws a rectangle when applied on a processing canvas", () -> {
         ProcessingCanvas canvas = mock(ProcessingCanvas.class);

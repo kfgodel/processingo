@@ -1,7 +1,7 @@
 package ar.com.kfgodel.processingo.impl.visuals;
 
+import ar.com.kfgodel.mathe.api.BidiVector;
 import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
-import ar.com.kfgodel.processingo.api.space.Vector2d;
 import ar.com.kfgodel.processingo.api.visuals.VisualDescription;
 
 /**
@@ -12,14 +12,14 @@ import ar.com.kfgodel.processingo.api.visuals.VisualDescription;
 public class TextVisual implements VisualDescription {
 
   private String text;
-  private Vector2d position;
+  private BidiVector position;
 
   @Override
   public void applyOn(ProcessingCanvas canvas) {
-    canvas.text(text, position.x(), position.y());
+    canvas.text(text, position.x().asFloat(), position.y().asFloat());
   }
 
-  public static TextVisual create(String text, Vector2d position) {
+  public static TextVisual create(String text, BidiVector position) {
     TextVisual visual = new TextVisual();
     visual.text = text;
     visual.position = position;

@@ -1,7 +1,7 @@
 package ar.com.kfgodel.processingo.impl.visuals;
 
+import ar.com.kfgodel.mathe.api.BidiVector;
 import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
-import ar.com.kfgodel.processingo.api.space.Vector2d;
 import ar.com.kfgodel.processingo.api.visuals.VisualDescription;
 
 /**
@@ -10,10 +10,10 @@ import ar.com.kfgodel.processingo.api.visuals.VisualDescription;
  */
 public class RectangleVisual implements VisualDescription {
 
-  private Vector2d position;
-  private Vector2d size;
+  private BidiVector position;
+  private BidiVector size;
 
-  public static RectangleVisual create(Vector2d position, Vector2d size) {
+  public static RectangleVisual create(BidiVector position, BidiVector size) {
     RectangleVisual visual = new RectangleVisual();
     visual.position = position;
     visual.size = size;
@@ -22,6 +22,6 @@ public class RectangleVisual implements VisualDescription {
 
   @Override
   public void applyOn(ProcessingCanvas canvas) {
-    canvas.rect(position.x(), position.y(), size.x(), size.y());
+    canvas.rect(position.x().asFloat(), position.y().asFloat(), size.width().asFloat(), size.height().asFloat());
   }
 }

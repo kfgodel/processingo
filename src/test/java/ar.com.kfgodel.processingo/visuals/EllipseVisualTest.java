@@ -2,9 +2,9 @@ package ar.com.kfgodel.processingo.visuals;
 
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
+import ar.com.kfgodel.mathe.api.Mathe;
 import ar.com.kfgodel.processingo.ProcessingoTestContext;
 import ar.com.kfgodel.processingo.api.original.ProcessingCanvas;
-import ar.com.kfgodel.processingo.api.space.Vector2d;
 import ar.com.kfgodel.processingo.impl.visuals.EllipseVisual;
 import org.junit.runner.RunWith;
 
@@ -20,7 +20,7 @@ public class EllipseVisualTest extends JavaSpec<ProcessingoTestContext> {
   @Override
   public void define() {
     describe("an ellipse visual", () -> {
-      context().visualDescription(() -> EllipseVisual.create(Vector2d.xy(1, 2), 100, 200));
+      context().visualDescription(() -> EllipseVisual.create(Mathe.vector(1, 2), 100, 200));
 
       it("draws an ellipse when applied on a processing canvas", () -> {
         ProcessingCanvas canvas = mock(ProcessingCanvas.class);
