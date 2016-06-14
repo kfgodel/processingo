@@ -43,8 +43,9 @@ public class WorkerThreadTest extends JavaSpec<ProcessingoTestContext> {
         context().worker().execute(task);
 
         try {
-          Thread testThread = Thread.currentThread();
-          assertThat(threadThatExecutedTheTask.get(500, TimeUnit.MILLISECONDS)).isNotEqualTo(testThread);
+          Thread currentThread = Thread.currentThread();
+          Thread taskThread = threadThatExecutedTheTask.get(500, TimeUnit.MILLISECONDS);
+          assertThat(taskThread).isNotEqualTo(currentThread);
         } catch (Exception e) {
           throw new RuntimeException("unexpected error", e);
         }
