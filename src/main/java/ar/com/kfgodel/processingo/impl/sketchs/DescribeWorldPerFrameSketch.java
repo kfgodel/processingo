@@ -6,7 +6,7 @@ import ar.com.kfgodel.processingo.api.viewports.ViewportDefinition;
 import ar.com.kfgodel.processingo.api.visuals.VisualDescription;
 
 /**
- * This type represents the sketch that draws the "represented world" everytime a frame is rendered.<br>
+ * This type represents the sketch that draws the "represented world" every time a frame is rendered.<br>
  * To draw each frame a world description is used
  * <p>
  * Created by tenpines on 28/10/15.
